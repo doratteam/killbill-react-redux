@@ -1,5 +1,6 @@
-Killbill React-Redux
+Killbill React Redux
 ---
+Killbill's front-end using React and Redux
 
 Usage
 ---
