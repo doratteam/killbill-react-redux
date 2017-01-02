@@ -20,3 +20,11 @@ Compile
 ```
 npm run compile
 ```
+
+Tests
+---
+Jasmine was chosen as the testing framework for now.
+Run tests with this command:
+```
+npm test
+```
