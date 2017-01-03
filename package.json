@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tchung1118/killbill-react-redux.git"
+    "url": "git+https://github.com/doratteam/killbill-react-redux.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tchung1118/killbill-react-redux/issues"
+    "url": "https://github.com/doratteam/killbill-react-redux/issues"
   },
-  "homepage": "https://github.com/tchung1118/killbill-react-redux#readme",
+  "homepage": "https://github.com/doratteam/killbill-react-redux#readme",
   "dependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
