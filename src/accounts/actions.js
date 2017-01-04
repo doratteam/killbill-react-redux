@@ -15,11 +15,12 @@ export const addAccount = (name) => {
 	};
 }
 
-export const editAcountInfo = (id) => {
+export const editAcountInfo = (id, accountInfo) => {
 	return {
 		type: EDIT_ACCOUNT_INFO,
 		payload: {
-			id: id
+			id: id,
+			accountInfo: accountInfo // Immutable.Map({name, description})
 		}
 	};
 }
@@ -33,12 +34,14 @@ export const deleteAccount = (id) => {
 	};
 }
 
-export const saveAccount = (id, account) => {
+// async actions
+export const saveAccount = (id) => {
 	return {
 		type: SAVE_ACCOUNT,
 		payload: {
-			id: id,
-			account: account
+			id: id
 		}
 	};
 }
+
+// TODO: add more async actions as API is built
