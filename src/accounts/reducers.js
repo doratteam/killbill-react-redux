@@ -63,8 +63,6 @@ const accountsById = createReducer(Immutable.Map({}), {
 	// TODO: add async reducers
 });
 
-console.log(createReducer);
-
 const allAccounts = createReducer(Immutable.List([]), {
 	ADD_ACCOUNT: (state, action) => {
 		const {id} = actio.payload;

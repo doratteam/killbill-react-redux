@@ -17,7 +17,7 @@ export const addAccount = (name) => {
 	};
 }
 
-export const editAcountInfo = (id, accountInfo) => {
+export const editAccountInfo = (id, accountInfo) => {
 	return {
 		type: ActionTypes.EDIT_ACCOUNT_INFO,
 		payload: {
