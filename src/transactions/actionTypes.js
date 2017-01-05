@@ -2,7 +2,7 @@
  * Transaction-related action types
  */
 
-export const ADD_TRANSACTION = 'ADD_TRANSACTION';
-export const EDIT_TRANSACTION = 'EDIT_TRANSACTION';
-export const DELETE_TRANSACTION = 'DELETE_TRANSACTION';
-export const SAVE_TRANSACTION = 'SAVE_TRANSACTION';
+export const AddTransaction = 'ADD_TRANSACTION';
+export const EditTransaction = 'EDIT_TRANSACTION';
+export const DeleteTransaction = 'DELETE_TRANSACTION';
+export const SaveTransaction = 'SAVE_TRANSACTION';

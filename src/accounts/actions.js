@@ -9,7 +9,7 @@ let uid = () => Math.random().toString(36).substr(2, 9);
 
 export const addAccount = (name) => {
 	return {
-		type: ActionTypes.ADD_ACCOUNT,
+		type: ActionTypes.AddAccount,
 		payload: {
 			id: uid(),
 			name: name
@@ -19,7 +19,7 @@ export const addAccount = (name) => {
 
 export const editAccountInfo = (id, accountInfo) => {
 	return {
-		type: ActionTypes.EDIT_ACCOUNT_INFO,
+		type: ActionTypes.EditAccountInfo,
 		payload: {
 			id: id,
 			accountInfo: accountInfo // Immutable.Map({name, description})
@@ -29,7 +29,7 @@ export const editAccountInfo = (id, accountInfo) => {
 
 export const deleteAccount = (id) => {
 	return {
-		type: ActionTypes.DELETE_ACCOUNT,
+		type: ActionTypes.DeleteAccount,
 		payload: {
 			id: id
 		}
@@ -39,7 +39,7 @@ export const deleteAccount = (id) => {
 // async actions
 export const saveAccount = (id) => {
 	return {
-		type: ActionTypes.SAVE_ACCOUNT,
+		type: ActionTypes.SaveAccount,
 		payload: {
 			id: id
 		}

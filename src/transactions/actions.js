@@ -2,12 +2,14 @@
  *  Transaction-related action creators
  */
 
+ import * as ActionTypes from './actionTypes.js';
+
 // temporary ID assignments (once server is done, these IDs will be generated from server)
 let uid = () => Math.random().toString(36).substr(2, 9);
 
 export const addTransaction = (accountId,title) => {
 	return {
-		type: ADD_TRANSACTION,
+		type: ActionTypes.AddTransaction,
 		payload: {
 			accountId: accountId,
 			transactionId: uid(),
@@ -18,7 +20,7 @@ export const addTransaction = (accountId,title) => {
 
 export const editTransaction = (id, transaction) => {
 	return {
-		type: EDIT_TRANSACTION,
+		type: ActionTypes.EditTransaction,
 		payload: {
 			id: id,
 			transaction: transaction
@@ -28,7 +30,7 @@ export const editTransaction = (id, transaction) => {
 
 export const deleteTransaction = (accountId,transactionId) => {
 	return {
-		type: DELETE_TRANSACTION,
+		type: ActionTypes.DeleteTransaction,
 		payload: {
 			accountId: accountId,
 			transactionId: transactionId

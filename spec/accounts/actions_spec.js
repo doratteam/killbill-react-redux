@@ -1,18 +1,19 @@
 import Immutable from 'immutable';
-import * as AccountActionTypes from '../../src/accounts/actionTypes.js';
-import * as AccountActions from '../../src/accounts/actions.js';
+import Accounts from '../../src/accounts'
+
+const {Actions, ActionTypes} = Accounts;
 
 let uid = () => Math.random().toString(36).substr(2, 9);
 
-describe('AccountActions.addAccount', () => {
-	var action = AccountActions.addAccount('My Account');
+describe('Accounts.Actions.addAccount', () => {
+	let action = Actions.addAccount('My Account');
 
-	it('returns an action with the type of ADD_ACCOUNT', () => {
-		expect(action.type).toEqual(AccountActionTypes.ADD_ACCOUNT);
+	it('returns an action with the type of AddAccount', () => {
+		expect(action.type).toBe(ActionTypes.AddAccount);
 	});
 
 	describe('payload of the returned action', () => {
-		var {payload} = action;
+		let {payload} = action;
 
 		it('has id and name properties', () => {
 			expect(payload.hasOwnProperty('id')).toEqual(true);
@@ -20,24 +21,24 @@ describe('AccountActions.addAccount', () => {
 		});
 
 		it('sets the name property with the name given as parameter', () => {
-			expect(payload.name).toEqual('My Account');
+			expect(payload.name).toBe('My Account');
 		});
 	});
 });
 
-describe('AccountActions.editAccountInfo', () => {
-	var accountId = uid();
-	var accountName = 'My Account';
-	var accountDescription = 'My main household account';
-	var action = AccountActions.editAccountInfo(accountId,
+describe('Accounts.Actions.editAccountInfo', () => {
+	let accountId = uid();
+	let accountName = 'My Account';
+	let accountDescription = 'My main household account';
+	let action = Actions.editAccountInfo(accountId,
 		Immutable.Map({name: accountName, description: accountDescription}));
 
-	it('returns an action with the type of EDIT_ACCOUNT_INFO', () => {
-		expect(action.type).toEqual(AccountActionTypes.EDIT_ACCOUNT_INFO);
+	it('returns an action with the type of EditAccountInfo', () => {
+		expect(action.type).toBe(ActionTypes.EditAccountInfo);
 	});
 
 	describe('payload of the returned action', () => {
-		var {payload} = action;
+		let {payload} = action;
 
 		it('has following properties', () => {
 			expect(payload.hasOwnProperty('id')).toEqual(true);
@@ -45,34 +46,34 @@ describe('AccountActions.editAccountInfo', () => {
 		});
 
 		it('sets the id with the given account id', () => {
-			expect(payload.id).toEqual(accountId);
+			expect(payload.id).toBe(accountId);
 		});
 
 		it('sets the accountInfo with the given Immutable.Map that holds info about account', () => {
-			var {accountInfo} = payload;
-			expect(accountInfo.get('name')).toEqual(accountName);
-			expect(accountInfo.get('description')).toEqual(accountDescription);
+			let {accountInfo} = payload;
+			expect(accountInfo.get('name')).toBe(accountName);
+			expect(accountInfo.get('description')).toBe(accountDescription);
 		});
 	});
 });
 
-describe('AccountActions.deleteAccount', () => {
-	var accountId = uid();
-	var action = AccountActions.deleteAccount(accountId);
+describe('Accounts.Actions.deleteAccount', () => {
+	let accountId = uid();
+	let action = Actions.deleteAccount(accountId);
 
-	it('returns an action with the type of DELETE_ACCOUNT', () => {
-		expect(action.type).toEqual(AccountActionTypes.DELETE_ACCOUNT);
+	it('returns an action with the type of DeleteAccount', () => {
+		expect(action.type).toBe(ActionTypes.DeleteAccount);
 	});
 
 	describe('payload of the returned action', () => {
-		var {payload} = action;
+		let {payload} = action;
 
 		it('has following properties', () => {
 			expect(payload.hasOwnProperty('id')).toEqual(true);
 		});
 
 		it('sets the id with the given account id', () => {
-			expect(payload.id).toEqual(accountId);
+			expect(payload.id).toBe(accountId);
 		});
 	});
 });

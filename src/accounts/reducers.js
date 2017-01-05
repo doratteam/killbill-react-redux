@@ -2,12 +2,13 @@
  * Accounts reducers
  */
 
-// TODO: use import transactions from '../transactions' and destructure transactions instead of importing every action types from transactions
 import Immutable from 'immutable';
 import * as AccountActionTypes from './actionTypes.js';
-import * as TransactionActionTypes from '../transactions/actionTypes.js';
+import Transactions from '../transactions'
 import {createReducer} from '../utils.js';
 import {combineReducers} from 'redux-immutable'
+
+const TransactionCrossActionTypes = Transactions.CrossActionTypes;
 
 function addTransaction(state, action) {
 	const {accountId, transactionId} = action.payload;
@@ -33,14 +34,14 @@ function deleteTransaction(state, action) {
 }
 
 const accountsById = createReducer(Immutable.Map({}), {
-	[TransactionActionTypes.ADD_TRANSACTION](state, action) {
+	[TransactionCrossActionTypes.AddTransaction](state, action) {
 		return addTransaction(state, action);
 	},
-	[TransactionActionTypes.DELETE_TRANSACTION](state, action) {
+	[TransactionCrossActionTypes.DeleteTransaction](state, action) {
 		return deleteTransaction(state, action);
 	},
-	[AccountActionTypes.ADD_ACCOUNT](state, action) {
-		const {id, name} = actio.payload;
+	[AccountActionTypes.AddAccount](state, action) {
+		const {id, name} = action.payload;
 
 		const account = Immutable.Map({
 			info: Immutable.Map({name: name}),
@@ -49,14 +50,14 @@ const accountsById = createReducer(Immutable.Map({}), {
 
 		return state.set(id, account);
 	},
-	[AccountActionTypes.EDIT_ACCOUNT_INFO](state, action) {
+	[AccountActionTypes.EditAccountInfo](state, action) {
 		const {id, accountInfo} = action.payload;
 		const account = state.get(id);
 		const updatedAccount = account.set('info', accountInfo);
 
 		return state.set(id, updatedAccount);
 	},
-	[AccountActionTypes.DELETE_ACCOUNT](state, action) {
+	[AccountActionTypes.DeleteAccount](state, action) {
 		const {id} = action.payload;
 		return state.delete(id);
 	}
@@ -64,12 +65,12 @@ const accountsById = createReducer(Immutable.Map({}), {
 });
 
 const allAccounts = createReducer(Immutable.List([]), {
-	ADD_ACCOUNT: (state, action) => {
-		const {id} = actio.payload;
+	[AccountActionTypes.AddAccount](state, action) {
+		const {id} = action.payload;
 
 		return state.push(id);
 	},
-	DELETE_ACCOUNT: (state, action) => {
+	[AccountActionTypes.DeleteAccount](state, action) {
 		const {id} = action.payload;
 		const idx = state.indexOf(id);
 		return state.delete(idx);
